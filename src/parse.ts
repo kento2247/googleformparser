@@ -13,7 +13,7 @@ export type FormItem = {
   description: string | null;
   type: string;
   type_code: number;
-  /** 回答欄の entry ID（プリフィル時は entry.<entry_id>）。回答欄のない項目は空配列 */
+  /** 回答欄の entry ID（Prefill時は entry.<entry_id>）。回答欄のない項目は空配列 */
   entries: FormEntry[];
   /** 選択肢（グリッドの場合は列） */
   options: string[];

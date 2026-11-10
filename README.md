@@ -33,7 +33,7 @@ POST /v1/forms  {"url": "<Google Forms URL>"}
 }
 ```
 
-プリフィル URL は `form_url?usp=pp_url&entry.<entry_id>=<値>`。グリッドは行ごとに `entries` を持つ（`label` が行名）。
+Prefill URL は `form_url?usp=pp_url&entry.<entry_id>=<値>`。グリッドは行ごとに `entries` を持つ（`label` が行名）。
 
 ## エラー
 

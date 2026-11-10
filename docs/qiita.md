@@ -2,7 +2,7 @@
 
 ## はじめに
 
-Google フォームには、URL のクエリで回答をあらかじめ埋めておく **プリフィル** 機能があります。
+Google フォームには、URL のクエリで回答をあらかじめ埋めておく **Prefill** 機能があります。
 
 ```
 https://docs.google.com/forms/d/e/<フォームID>/viewform?usp=pp_url&entry.1234567890=山田太郎
@@ -127,7 +127,7 @@ flowchart TB
     I --> I3["[3] 種別コード"]
     I --> I4["[4] 回答欄の配列"]
     I4 --> E["entry"]
-    E --> E0["[0] entry ID ★プリフィルに使う"]
+    E --> E0["[0] entry ID ★Prefillに使う"]
     E --> E1["[1] 選択肢 [[値, ..., その他フラグ]]"]
     E --> E2["[2] 必須なら 1"]
     E --> E3["[3] グリッドの行名 / 目盛の両端ラベル"]
@@ -188,7 +188,7 @@ export function parseGoogleFormHtml(html: string): ParsedForm | null {
 
 ## 仕組み② 「誰でも回答できるか」はリダイレクト先で判定する
 
-プリフィル URL を配っても、回答者がフォームを開けなければ意味がありません。そこで解析の前に **公開設定** を確認します。
+Prefill URL を配っても、回答者がフォームを開けなければ意味がありません。そこで解析の前に **公開設定** を確認します。
 
 Google フォームは、未ログインでアクセスしたときの挙動が設定によって変わります。
 
@@ -322,7 +322,7 @@ if (cached) {
 ctx.waitUntil(caches.default.put(cacheKey, response.clone()));
 ```
 
-## 使い方の例：設問タイトルから自動でプリフィル URL を作る
+## 使い方の例：設問タイトルから自動でPrefill URL を作る
 
 API の結果を使えば、「タイトルが `氏名` の設問にユーザー名を入れる」といった対応付けを自動化できます。
 
@@ -357,7 +357,7 @@ sequenceDiagram
     API-->>App: 設問タイトル ⇔ entry ID
     App->>App: タイトルで会員情報の項目と対応付けて保存
     User->>App: 「アンケートに回答」
-    App-->>User: 302 プリフィル URL
+    App-->>User: 302 Prefill URL
     User->>GF: 氏名・所属が入った状態で回答
 ```
 
@@ -392,4 +392,4 @@ it('許可ホスト以外へのリダイレクトは辿らない', async () => {
 - 公開設定は、未ログインでアクセスしたときのリダイレクト先（`accounts.google.com` / `closedform`）で判定できる
 - 公開 API にするなら、**手動リダイレクトによる SSRF 対策**・**Rate Limiting binding**・**Cache API** の 3 点を入れておくと安心
 
-プリフィル URL の手作業から解放されたい方の参考になれば幸いです。
+Prefill URL の手作業から解放されたい方の参考になれば幸いです。
