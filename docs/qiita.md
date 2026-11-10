@@ -26,7 +26,7 @@ POST /v1/forms   {"url": "<Google フォームの URL>"}
 `viewform` の URL だけでなく、`forms.gle` の短縮 URL や編集画面の `/edit` URL も受け付けます。
 
 ```bash
-curl "https://<your-worker>.workers.dev/v1/forms?url=https://forms.gle/xxxxxxxx"
+curl "https://googleforms-api.googleformparser.workers.dev/v1/forms?url=https://forms.gle/xxxxxxxx"
 ```
 
 ```json
